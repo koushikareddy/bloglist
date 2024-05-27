@@ -1,29 +1,27 @@
-import './App.css';
+import {Route, Switch} from 'react-router-dom'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src="Octocat.png" className="App-logo" alt="logo" />
-        <p>
-          GitHub Codespaces <span className="heart">♥️</span> React
-        </p>
-        <p className="small">
-          Edit <code>src/App.jsx</code> and save to reload.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </p>
-      </header>
+import Header from './components/Header'
+import About from './components/About'
+import Home from './components/Home'
+import Contact from './components/Contact'
+import NotFound from './components/NotFound'
+
+import './App.css'
+
+const App = () => (
+  <div className="app-container">
+    <div className="responsive-container">
+      <Header />
+      <div className="app-body">
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/about" component={About} />
+          <Route exact path="/contact" component={Contact} />
+          <Route component={NotFound} />
+        </Switch>
+      </div>
     </div>
-  );
-}
+  </div>
+)
 
-export default App;
+export default App
